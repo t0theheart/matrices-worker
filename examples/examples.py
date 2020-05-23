@@ -1,6 +1,6 @@
 from matrices_workers.matrices_worker.matrices_worker import MatricesWorker
 from matrices_workers.matrices_generator.matrices_generator import MatricesGenerator
-from matrices_workers.matrices_adapters.matrices_generator_adapter import MatricesGeneratorAdapter
+from matrices_workers.matrices_adapter.matrices_generator_adapter import MatricesGeneratorAdapter
 
 
 class Client:
