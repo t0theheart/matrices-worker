@@ -1,8 +1,9 @@
 from matrices_workers import MatricesWorker, MatricesGenerator, MatricesGeneratorAdapter
+from matrices_workers.matrices_worker.abc import MatricesWorkerABC
 
 
 class Client:
-    def __init__(self, worker: MatricesWorker):
+    def __init__(self, worker: MatricesWorkerABC):
         self._worker = worker
 
     def do_something(self, read_from: str, write_to: str):
