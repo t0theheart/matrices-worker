@@ -12,7 +12,7 @@ class Client:
 
 
 matrices_worker_1 = MatricesWorker()
-matrices_worker_2 = MatricesGenerator(min_value=-10, max_value=10)
+matrices_worker_2 = MatricesGenerator(min_value=-10, max_value=10, height=3, width=3)
 
 # Client's object can work with MatricesWorker's object!
 client_1 = Client(matrices_worker_1)
@@ -27,10 +27,10 @@ except AttributeError:
     pass
 
 
-matrices_worker_3 = MatricesGeneratorAdapter(min_value=-10, max_value=10)
+matrices_worker_3 = MatricesGeneratorAdapter(min_value=-20, max_value=20, height=4, width=4)
 
 # MatricesGenerator's object has its own method 'generate_and_write_matrices'
-matrices_worker_3.generate_and_write_matrices(height=3, width=3, write_to='new_matrices.json')
+matrices_worker_3.generate_and_write_matrices(write_to='new_matrices.json')
 
 # And our client can work with it! MatricesGeneratorAdapter's object has 'put_matrices_sum_to_file' method!
 client_3 = Client(matrices_worker_3)
