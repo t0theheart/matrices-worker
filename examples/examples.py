@@ -4,29 +4,34 @@ from matrices_workers.matrices_adapter.matrices_generator_adapter import Matrice
 
 
 class Client:
-    @staticmethod
-    def do_something(worker: MatricesWorker):
-        worker.put_matrices_sum_to_file(read_from='matrices.json', write_to='result.json')
+    def __init__(self, worker: MatricesWorker):
+        self._worker = worker
+
+    def do_something(self, read_from: str, write_to: str):
+        self._worker.put_matrices_sum_to_file(read_from, write_to)
 
 
 matrices_worker_1 = MatricesWorker()
 matrices_worker_2 = MatricesGenerator(min_value=-10, max_value=10)
 
-# Client can work with MatricesWorker's object!
-Client.do_something(matrices_worker_1)
+# Client's object can work with MatricesWorker's object!
+client_1 = Client(matrices_worker_1)
+client_1.do_something(read_from='matrices.json', write_to='result.json')
 
 # Expected type 'MatricesWorker', got 'MatricesGenerator' instead.... Oops!
 # Client can't work with MatricesGenerator's object, the object doesn't have 'put_matrices_sum_to_file' method
 try:
-    Client.do_something(matrices_worker_2)
+    client_2 = Client(matrices_worker_2)
+    client_2.do_something(read_from='matrices.json', write_to='result.json')
 except AttributeError:
     pass
 
 
 matrices_worker_3 = MatricesGeneratorAdapter(min_value=-10, max_value=10)
 
-# Client can work! MatricesGeneratorAdapter's object has 'put_matrices_sum_to_file' method
-Client.do_something(matrices_worker_3)
-
-# and others MatricesGenerator methods!
+# MatricesGenerator's object has its own method 'generate_and_write_matrices'
 matrices_worker_3.generate_and_write_matrices(height=3, width=3, write_to='new_matrices.json')
+
+# And our client can work with it! MatricesGeneratorAdapter's object has 'put_matrices_sum_to_file' method!
+client_3 = Client(matrices_worker_3)
+client_3.do_something(read_from='new_matrices.json', write_to='new_result.json')
