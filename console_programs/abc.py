@@ -3,5 +3,4 @@ from abc import ABC, abstractmethod
 
 class ConsoleMatricesWorkerProgramABC(ABC):
     @abstractmethod
-    def start(self):
-        """text"""
+    def start(self): pass

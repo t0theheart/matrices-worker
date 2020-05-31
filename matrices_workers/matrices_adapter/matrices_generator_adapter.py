@@ -3,4 +3,4 @@ from matrices_workers.matrices_generator.matrices_generator import MatricesGener
 
 
 class MatricesGeneratorAdapter(MatricesWorker, MatricesGenerator):
-    """text"""
+    """Adapter for MatricesGenerator"""
