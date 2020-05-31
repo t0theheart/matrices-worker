@@ -67,7 +67,7 @@ def __init__(self, program: ConsoleMatricesWorkerWithGeneratorProgram):
 - Proxy adds new logic and gives the same interface.
 
 
-#### There are three program:
+#### There are three programs:
 1. program_1.py reads matrices from file and writes sum to another file
 2. program_2.py generates matrices to file and writes sum to another file.
 3. program_3.py does as the program_2 but without console interface.
