@@ -17,7 +17,7 @@ The operations like read and write from file, add and generate matrices.
 
 **console_programs** objects provide a console interface to interact with **matrices_workers** objects.
 
-#### Programs and their class schemas:
+### Programs and their class schemas:
 **program_1.py** reads matrices from file and writes sum to another file.
 
 ![](class_schemas/program_1.png)
